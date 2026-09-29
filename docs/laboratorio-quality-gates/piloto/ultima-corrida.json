@@ -1,0 +1,142 @@
+﻿[
+    {
+        "Id":  "C01",
+        "Nombre":  "Cambio alineado a HU-001",
+        "Defecto":  "ninguno",
+        "Esperado":  "-",
+        "Fallidos":  "-",
+        "Detenido":  false,
+        "FalsoPositivo":  false,
+        "Modo":  "naive"
+    },
+    {
+        "Id":  "C02",
+        "Nombre":  "Secreto en configuracion generada",
+        "Defecto":  "secreto",
+        "Esperado":  "G-SECRET",
+        "Fallidos":  "G-SECRET",
+        "Detenido":  true,
+        "FalsoPositivo":  false,
+        "Modo":  "naive"
+    },
+    {
+        "Id":  "C03",
+        "Nombre":  "Diff sin historia de usuario ni evaluacion de impacto",
+        "Defecto":  "sin-hu",
+        "Esperado":  "G-TRAZA",
+        "Fallidos":  "G-TRAZA, G-IMPACTO",
+        "Detenido":  true,
+        "FalsoPositivo":  false,
+        "Modo":  "naive"
+    },
+    {
+        "Id":  "C04",
+        "Nombre":  "Migracion declarada sin plan de reversion",
+        "Defecto":  "sin-rollback",
+        "Esperado":  "G-ROLLBACK",
+        "Fallidos":  "G-ROLLBACK",
+        "Detenido":  true,
+        "FalsoPositivo":  false,
+        "Modo":  "naive"
+    },
+    {
+        "Id":  "C05",
+        "Nombre":  "Endpoint de escritura contra una spec de solo lectura",
+        "Defecto":  "escritura",
+        "Esperado":  "G-SOLO-LECTURA",
+        "Fallidos":  "G-SOLO-LECTURA",
+        "Detenido":  true,
+        "FalsoPositivo":  false,
+        "Modo":  "naive"
+    },
+    {
+        "Id":  "C06",
+        "Nombre":  "Mencion documental de un secreto de ejemplo",
+        "Defecto":  "documentacion",
+        "Esperado":  "G-SECRET",
+        "Fallidos":  "G-SECRET",
+        "Detenido":  false,
+        "FalsoPositivo":  true,
+        "Modo":  "naive"
+    },
+    {
+        "Id":  "C07",
+        "Nombre":  "Filtro que distingue mayusculas",
+        "Defecto":  "filtro",
+        "Esperado":  "G-FILTRO",
+        "Fallidos":  "G-FILTRO",
+        "Detenido":  true,
+        "FalsoPositivo":  false,
+        "Modo":  "naive"
+    },
+    {
+        "Id":  "C01",
+        "Nombre":  "Cambio alineado a HU-001",
+        "Defecto":  "ninguno",
+        "Esperado":  "-",
+        "Fallidos":  "-",
+        "Detenido":  false,
+        "FalsoPositivo":  false,
+        "Modo":  "calibrado"
+    },
+    {
+        "Id":  "C02",
+        "Nombre":  "Secreto en configuracion generada",
+        "Defecto":  "secreto",
+        "Esperado":  "G-SECRET",
+        "Fallidos":  "G-SECRET",
+        "Detenido":  true,
+        "FalsoPositivo":  false,
+        "Modo":  "calibrado"
+    },
+    {
+        "Id":  "C03",
+        "Nombre":  "Diff sin historia de usuario ni evaluacion de impacto",
+        "Defecto":  "sin-hu",
+        "Esperado":  "G-TRAZA",
+        "Fallidos":  "G-TRAZA, G-IMPACTO",
+        "Detenido":  true,
+        "FalsoPositivo":  false,
+        "Modo":  "calibrado"
+    },
+    {
+        "Id":  "C04",
+        "Nombre":  "Migracion declarada sin plan de reversion",
+        "Defecto":  "sin-rollback",
+        "Esperado":  "G-ROLLBACK",
+        "Fallidos":  "G-ROLLBACK",
+        "Detenido":  true,
+        "FalsoPositivo":  false,
+        "Modo":  "calibrado"
+    },
+    {
+        "Id":  "C05",
+        "Nombre":  "Endpoint de escritura contra una spec de solo lectura",
+        "Defecto":  "escritura",
+        "Esperado":  "G-SOLO-LECTURA",
+        "Fallidos":  "G-SOLO-LECTURA",
+        "Detenido":  true,
+        "FalsoPositivo":  false,
+        "Modo":  "calibrado"
+    },
+    {
+        "Id":  "C06",
+        "Nombre":  "Mencion documental de un secreto de ejemplo",
+        "Defecto":  "documentacion",
+        "Esperado":  "G-SECRET",
+        "Fallidos":  "-",
+        "Detenido":  false,
+        "FalsoPositivo":  false,
+        "Modo":  "calibrado"
+    },
+    {
+        "Id":  "C07",
+        "Nombre":  "Filtro que distingue mayusculas",
+        "Defecto":  "filtro",
+        "Esperado":  "G-FILTRO",
+        "Fallidos":  "G-FILTRO",
+        "Detenido":  true,
+        "FalsoPositivo":  false,
+        "Modo":  "calibrado"
+    }
+]

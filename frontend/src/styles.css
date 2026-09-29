@@ -1,0 +1,273 @@
+:root {
+  --bg: #f7f7f8;
+  --surface: #ffffff;
+  --text: #1c1c1e;
+  --muted: #6b6b70;
+  --border: #dcdce0;
+  --accent: #2459d6;
+  --error: #b3261e;
+  --on-accent: #ffffff;
+  --success: #1e6b3a;
+  --success-bg: #e6f4ea;
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161618;
+    --surface: #1f1f22;
+    --text: #ececef;
+    --muted: #a0a0a8;
+    --border: #34343a;
+    --accent: #7aa2ff;
+    --error: #ff8a80;
+    --on-accent: #0d1a33;
+    --success: #8fd6a4;
+    --success-bg: #17301f;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0 0 16px;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.search-bar label {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.search-bar input {
+  font: inherit;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  max-width: 360px;
+}
+
+.search-bar input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.product-table th,
+.product-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.product-table th {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.product-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 12px 0;
+}
+
+.error {
+  color: var(--error);
+}
+
+/* HU-002: alta de producto */
+
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.app-header h1 {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.add-product {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.add-product h2 {
+  font-size: 1.125rem;
+  margin: 0 0 12px;
+}
+
+.add-product-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.field label {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.field input {
+  font: inherit;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  min-width: 0;
+}
+
+.field input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.field input[aria-invalid='true'] {
+  border-color: var(--error);
+}
+
+.field-error {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--error);
+}
+
+.add-product-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.confirmation {
+  background: var(--success-bg);
+  color: var(--success);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin: 0 0 16px;
+}
+
+.product-table td:first-child {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .product-table th,
+  .product-table td {
+    padding: 8px 6px;
+    font-size: 0.875rem;
+  }
+}
+
+/* HU-003: edición de producto */
+
+.form-anchor {
+  scroll-margin-top: 16px;
+}
+
+/* La tabla se desplaza dentro de su contenedor para no provocar scroll horizontal en la página. */
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-table th.actions,
+.product-table td.actions {
+  width: 1%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+button.small {
+  padding: 4px 10px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+button.small:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Fondo atenuado y borde discontinuo; el texto conserva el color normal para mantener el contraste. */
+.field input[readonly] {
+  background: var(--border);
+  border-style: dashed;
+  color: var(--text);
+  cursor: default;
+}
+
+.field input[readonly]:focus {
+  outline-style: dashed;
+}

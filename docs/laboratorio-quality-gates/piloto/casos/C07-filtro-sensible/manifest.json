@@ -1,0 +1,6 @@
+{
+  "id": "C07",
+  "nombre": "Filtro que distingue mayusculas",
+  "defecto": "filtro",
+  "queDemuestra": "El codigo cumple el endpoint pero rompe el escenario de la spec: busqueda sin distinguir mayusculas."
+}

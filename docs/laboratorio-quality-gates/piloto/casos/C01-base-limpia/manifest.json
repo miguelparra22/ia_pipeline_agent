@@ -1,0 +1,6 @@
+{
+  "id": "C01",
+  "nombre": "Cambio alineado a HU-001",
+  "defecto": null,
+  "queDemuestra": "Un diff de agente que respeta spec, trazabilidad, rollback y solo lectura pasa todos los gates locales."
+}

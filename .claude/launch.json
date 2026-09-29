@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "backend",
+      "runtimeExecutable": "java",
+      "runtimeArgs": [
+        "-Djdk.net.unixdomain.tmpdir=backend/target/e2e",
+        "-jar",
+        "backend/target/inventory-backend-0.1.0-SNAPSHOT.jar",
+        "--server.port=8080",
+        "--inventory.db.path=backend/target/e2e/preview.db"
+      ],
+      "port": 8080
+    },
+    {
+      "name": "frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "frontend", "run", "dev", "--", "--port", "5173", "--strictPort"],
+      "port": 5173
+    }
+  ]
+}

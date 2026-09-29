@@ -1,0 +1,6 @@
+{
+  "id": "C06",
+  "nombre": "Mencion documental de un secreto de ejemplo",
+  "defecto": "documentacion",
+  "queDemuestra": "Un scanner ingenuo marca la documentacion del propio gate. Sirve para mostrar la calibracion de falsos positivos."
+}

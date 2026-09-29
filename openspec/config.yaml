@@ -1,0 +1,18 @@
+schema: spec-driven
+
+context: |
+  Stack: Spring Boot 3 (Java 21) + React con TypeScript
+  Pruebas: JUnit 5, Testcontainers, Vitest, Playwright
+  Convenciones: seguir las skills internas de Q-Vision
+  Cada cambio debe referenciar su historia de usuario (HU-XXX)
+
+rules:
+  proposal:
+    - Incluir el ID de la historia de usuario
+    - Indicar si toca autenticación, datos personales o migraciones
+    - Incluir plan de rollback
+  specs:
+    - Escenarios en formato Given/When/Then
+    - Incluir criterios de aceptación de la HU
+  tasks:
+    - Incluir tareas de pruebas unitarias e integración

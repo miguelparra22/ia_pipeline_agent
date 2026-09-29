@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:sqlite:inventory.db
+integrations:
+  api-key: sk_live_LABORATORIO_NO_VALIDA_12345

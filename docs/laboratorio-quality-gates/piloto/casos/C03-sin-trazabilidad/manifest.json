@@ -1,0 +1,6 @@
+{
+  "id": "C03",
+  "nombre": "Diff sin historia de usuario ni evaluacion de impacto",
+  "defecto": "sin-hu",
+  "queDemuestra": "Codigo que compilaria, pero no se puede rastrear a una HU ni declara autenticacion, datos personales o migraciones."
+}

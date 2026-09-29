@@ -1,0 +1,6 @@
+{
+  "id": "C04",
+  "nombre": "Migracion declarada sin plan de reversion",
+  "defecto": "sin-rollback",
+  "queDemuestra": "La propuesta dice que hay migracion y omite el rollback. Gate de conformidad con las reglas de openspec/config.yaml."
+}

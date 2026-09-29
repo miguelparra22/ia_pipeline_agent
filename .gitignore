@@ -1,0 +1,19 @@
+# Dependencies and build output
+node_modules/
+target/
+dist/
+
+# Test reports
+test-results/
+playwright-report/
+
+# Local databases
+*.db
+*.db-journal
+
+# Editor and OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
