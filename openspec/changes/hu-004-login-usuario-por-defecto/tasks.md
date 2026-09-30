@@ -17,7 +17,7 @@
 
 ## 4. Ajuste de pruebas E2E existentes
 
-- [ ] 4.1 Actualizar `frontend/e2e/*` para iniciar sesión (o inyectar la marca de sesión en `localStorage` antes de navegar) de modo que los flujos de HU-001/HU-002/HU-003 sigan pasando — verificar con `npm run test:e2e`
+- [x] 4.1 Actualizar `frontend/e2e/*` para iniciar sesión (o inyectar la marca de sesión en `localStorage` antes de navegar) de modo que los flujos de HU-001/HU-002/HU-003 sigan pasando — verificar con `npm run test:e2e`
 
 ## 5. Verificación final
 

@@ -21,6 +21,11 @@ async function fillForm(page: Page, values: { sku: string; name: string; quantit
 }
 
 test.beforeEach(async ({ page }) => {
+  // HU-004: el inventario ahora queda detrás de login; se inyecta la marca de sesión antes de
+  // navegar para que estas pruebas de HU-002 sigan ejerciendo el inventario directamente.
+  await page.addInitScript(() => {
+    window.localStorage.setItem('inventory_session', 'active');
+  });
   await page.goto('/');
   await expect(rows(page).filter({ hasText: 'Bujía Spark' })).toHaveCount(1);
 });

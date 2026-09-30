@@ -22,6 +22,11 @@ async function expectAllSeededVisible(page: Page) {
 }
 
 test.beforeEach(async ({ page }) => {
+  // HU-004: el inventario ahora queda detrás de login; se inyecta la marca de sesión antes de
+  // navegar para que estas pruebas de HU-001 sigan ejerciendo el inventario directamente.
+  await page.addInitScript(() => {
+    window.localStorage.setItem('inventory_session', 'active');
+  });
   await page.goto('/');
 });
 
