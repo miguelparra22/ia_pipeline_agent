@@ -7,7 +7,7 @@
 
 ## 2. Pantalla de login
 
-- [ ] 2.1 Crear `frontend/src/auth/Login.tsx` con el formulario "Usuario"/"Contraseña" y la acción "Ingresar", que usa `useAuth().login` y muestra "Usuario o contraseña incorrectos" en fallo, y su test `Login.test.tsx` cubriendo los escenarios de `specs/inicio-sesion/spec.md` (ingreso exitoso, credenciales incorrectas, campos vacíos) — verificar con `npm run test`
+- [x] 2.1 Crear `frontend/src/auth/Login.tsx` con el formulario "Usuario"/"Contraseña" y la acción "Ingresar", que usa `useAuth().login` y muestra "Usuario o contraseña incorrectos" en fallo, y su test `Login.test.tsx` cubriendo los escenarios de `specs/inicio-sesion/spec.md` (ingreso exitoso, credenciales incorrectas, campos vacíos) — verificar con `npm run test`
 
 ## 3. Bloqueo de acceso al inventario
 
