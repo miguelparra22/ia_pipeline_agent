@@ -36,7 +36,7 @@ El autor no aprueba su propio cambio. Un override lo firma el líder técnico y 
 
 ## 4. Familia A. Gates de pre-merge
 
-Corren en integración continua y, mientras no exista pipeline, el arnés local cubre secretos. El resto entra en el primer pipeline del stack Spring Boot + React.
+Corren en `.github/workflows/quality-gates.yml` y, en local, con `proyecto/run-proyecto.ps1`. Ese recorrido cubre compilación, pruebas, cobertura JaCoCo y Vitest, y secretos. SAST y dependencias siguen fuera del pipeline.
 
 | ID | Gate | Herramienta prevista en el stack | Baja | Media | Alta |
 | --- | --- | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ Corren en integración continua y, mientras no exista pipeline, el arnés local 
 | P7 | Secretos | gitleaks. Hoy: `G-SECRET` del arnés | Bloquea | Bloquea | Bloquea |
 | P8 | Dependencias | OWASP Dependency-Check, `npm audit` u OSV-Scanner | CVE crítico | CVE alto y crítico | CVE medio, alto y crítico |
 
-P7 ignora líneas marcadas `ejemplo-de-gate`. Esa excepción salió del piloto: sin ella, la documentación del propio gate se marcaba como secreto.
+P7 ignora líneas marcadas `ejemplo-de-gate`. Esa excepción salió del piloto: sin ella, la documentación del propio gate se marcaba como secreto. En el proyecto, el escáner calibrado recorre `backend/src`, `frontend/src` y `openspec`. Si gitleaks está instalado, `run-proyecto.ps1` también lo ejecuta con `proyecto/.gitleaks.toml`.
 
 ## 5. Familia B. Gates de revisión
 
