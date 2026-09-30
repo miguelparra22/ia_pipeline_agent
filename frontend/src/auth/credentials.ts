@@ -4,5 +4,5 @@
  */
 export const DEFAULT_USER = {
   username: 'admin',
-  password: 'admin123',
+  password: 'admin123', // ejemplo-de-gate: usuario por defecto de HU-004, no es una clave real
 };

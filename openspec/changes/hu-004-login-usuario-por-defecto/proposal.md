@@ -22,6 +22,9 @@ HU-004: la aplicación de inventario es accesible sin ningún control de acceso 
 
 ## Impact
 
+- **¿Toca Autenticación?:** Sí. Hay una pantalla de login, pero es un mock en el frontend: el backend no exige sesión.
+- **¿Maneja Datos Personales?:** No. Solo se compara el usuario por defecto contra una constante. No se guardan datos de personas.
+- **¿Incluye Migraciones/Base de Datos?:** No. No hay tablas ni índices nuevos.
 - **Frontend**: nuevo componente de login y estado de sesión en `frontend/src/App.tsx` (o un wrapper de autenticación que envuelva la app actual); nuevos tests en Vitest/Testing Library; posible ajuste de tests E2E de Playwright para autenticarse antes de interactuar con el inventario.
 - **Backend**: sin cambios. Los endpoints de `ProductController` siguen sin autenticación real — se deja registrado como riesgo conocido, no como bug de esta HU.
 - **Rollback**: revertir el commit/PR de esta HU restaura el comportamiento actual (app visible sin login). No hay migraciones de base de datos ni datos persistidos del lado del servidor que revertir.
