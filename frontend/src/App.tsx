@@ -15,11 +15,16 @@ export const updatedMessage = (name: string) => `Producto ${name} actualizado co
 /** HU-003: un solo estado para el formulario, así es imposible tener dos abiertos a la vez. */
 type FormState = null | { mode: 'create' } | { mode: 'edit'; product: Product };
 
+interface AppProps {
+  /** HU-004: cierra la sesión y vuelve a mostrar el login; la app no gestiona sesión por sí sola. */
+  onLogout?: () => void;
+}
+
 /**
  * Vista principal: consulta de inventario (HU-001), alta de productos (HU-002) y edición de
  * productos (HU-003).
  */
-export function App() {
+export function App({ onLogout }: AppProps = {}) {
   const [query, setQuery] = useState('');
   const [refreshKey, setRefreshKey] = useState(0);
   const [form, setForm] = useState<FormState>(null);
@@ -72,12 +77,20 @@ export function App() {
     <main className="app">
       <header className="app-header">
         <h1>Consulta de inventario</h1>
-        {/* Oculto solo mientras el alta está abierta; desde la edición permite cambiar al alta. */}
-        {form?.mode !== 'create' && (
-          <button type="button" className="primary" onClick={openCreate}>
-            Agregar producto
-          </button>
-        )}
+        <div className="app-header-actions">
+          {/* Oculto solo mientras el alta está abierta; desde la edición permite cambiar al alta. */}
+          {form?.mode !== 'create' && (
+            <button type="button" className="primary" onClick={openCreate}>
+              Agregar producto
+            </button>
+          )}
+          {/* HU-004: siempre visible mientras hay sesión activa. */}
+          {onLogout && (
+            <button type="button" onClick={onLogout}>
+              Cerrar sesión
+            </button>
+          )}
+        </div>
       </header>
       {form && (
         <div ref={formRef} className="form-anchor">
