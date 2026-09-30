@@ -121,6 +121,13 @@ h1 {
   margin: 0;
 }
 
+/* HU-004: agrupa Agregar producto y Cerrar sesión sin romper el layout responsivo existente. */
+.app-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 button {
   font: inherit;
   padding: 8px 16px;

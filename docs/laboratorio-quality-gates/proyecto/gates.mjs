@@ -22,7 +22,8 @@ const TEXT_EXT = new Set([
   ".css",
 ]);
 
-const SECRET = /AKIA[0-9A-Z]{16}|sk_live_[0-9A-Za-z]+|password\s*[:=]\s*\S+/i;
+// password: string y password === no son credenciales. password = valor y password: 'valor' sí.
+const SECRET = /AKIA[0-9A-Z]{16}|sk_live_[0-9A-Za-z]+|password\s*(?::|=(?!=))\s*(?!string\b|boolean\b|number\b|any\b|unknown\b)\S+/i;
 const MIGRATION_YES = /Migraciones[^\n]{0,160}\?:\*{0,2}\s*S[ií]/i;
 const ROLLBACK = /DROP\s+(TABLE|INDEX)/i;
 

@@ -130,6 +130,27 @@ describe('App', () => {
     expect(screen.queryByText('No se encontraron productos')).not.toBeInTheDocument();
   });
 
+  // HU-004: acción "Cerrar sesión" visible junto al encabezado, delegada al llamador.
+  describe('cierre de sesión', () => {
+    it('no muestra "Cerrar sesión" sin un onLogout', async () => {
+      render(<App />);
+      await waitFor(() => expect(productNames()).toHaveLength(2));
+
+      expect(screen.queryByRole('button', { name: 'Cerrar sesión' })).not.toBeInTheDocument();
+    });
+
+    it('muestra "Cerrar sesión" y llama a onLogout al pulsarlo', async () => {
+      const user = userEvent.setup();
+      const onLogout = vi.fn();
+      render(<App onLogout={onLogout} />);
+      await waitFor(() => expect(productNames()).toHaveLength(2));
+
+      await user.click(screen.getByRole('button', { name: 'Cerrar sesión' }));
+
+      expect(onLogout).toHaveBeenCalledTimes(1);
+    });
+  });
+
   // HU-002: alta de producto desde la vista de inventario.
   describe('alta de producto', () => {
     async function fillRadiador(user: ReturnType<typeof userEvent.setup>) {
