@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [
+      {
+        "command": "node .cursor/hooks/quality-gate-commit.mjs",
+        "matcher": "git(\\.exe)?\\s+commit",
+        "timeout": 30,
+        "failClosed": false
+      }
+    ]
+  }
+}
