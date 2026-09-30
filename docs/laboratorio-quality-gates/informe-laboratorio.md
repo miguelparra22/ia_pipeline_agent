@@ -137,8 +137,9 @@ Adoptar el anexo como guía de las células, con este alcance:
 
 ### Ajustes pendientes
 
-- Implementar HU-001 en Spring Boot + React y repetir el piloto con los mismos defectos sembrados dentro del pipeline, para medir tiempo de ciclo real.
-- Sustituir los patrones locales por gitleaks, el verificador de OpenSpec y el SAST elegido por la fábrica.
+- Elegir el SAST de la fábrica (Semgrep o SpotBugs) y el análisis de dependencias, y sumarlos al pipeline.
+- Instalar gitleaks en las máquinas de la fábrica. El archivo `proyecto/.gitleaks.toml` ya ignora los casos del piloto y la marca `ejemplo-de-gate`. Mientras no esté en el PATH, el bloqueo lo hace el escáner calibrado.
+- `openspec verify` sigue siendo la revisión de completitud, corrección y coherencia antes de archivar. El pipeline comprueba trazabilidad, impacto, rollback y el filtro; no sustituye esa revisión.
 - Completar la plantilla oficial del área con estos apartados si los encabezados internos difieren de este documento.
 - Registrar, durante un sprint de uso real, overrides humanos y reintentos para ajustar los umbrales de media y alta.
 
@@ -146,3 +147,18 @@ Adoptar el anexo como guía de las células, con este alcance:
 
 - [Anexo A. Estándar de Quality Gates](anexo-a-estandar-quality-gates.md)
 - Arnés y casos: `piloto/`
+- Pipeline del proyecto: `proyecto/run-proyecto.ps1`
+
+## 9. Corrida sobre el proyecto
+
+El 29 de septiembre de 2026 se ejecutó `proyecto/run-proyecto.ps1` sobre el front y el backend. El código real quedó en verde y la repetición detuvo los tres defectos sembrados en copias en memoria (secreto, migración sin rollback y filtro sensible a mayúsculas). Esa repetición no modifica los archivos del proyecto.
+
+| Etapa | Resultado | Tiempo |
+| --- | --- | --- |
+| Secretos y conformidad de las tres propuestas | Verde | 241 ms |
+| Backend: `mvn verify` y JaCoCo (mínimo 80 % de líneas) | Verde. 26 pruebas unitarias y 23 de integración. Cobertura de líneas 81/83 (98 %) | 41,7 s |
+| Frontend: Vitest con cobertura (mínimo 80 % de líneas) | Verde. 61 pruebas. 99,5 % de líneas | 32,3 s |
+| Frontend: `npm run build` | Verde | 8,4 s |
+| Repetición C02, C04 y C07 | 3/3 detenidos. Los archivos reales siguieron pasando. El ejemplo `ejemplo-de-gate` no se marcó | 260 ms |
+
+Tiempo total de esa corrida local: 83 s. La evidencia está en `proyecto/ultima-corrida.json`. El mismo recorrido está en `.github/workflows/quality-gates.yml`. Gitleaks no estaba instalado en esa máquina.

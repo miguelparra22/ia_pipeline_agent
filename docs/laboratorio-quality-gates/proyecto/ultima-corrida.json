@@ -1,0 +1,32 @@
+﻿{
+    "Fecha":  "2026-09-29 21:24:27",
+    "Ok":  true,
+    "TotalMs":  82980,
+    "Etapas":  [
+                   {
+                       "Nombre":  "Secretos y conformidad (codigo y propuestas)",
+                       "Ok":  true,
+                       "Ms":  241
+                   },
+                   {
+                       "Nombre":  "Backend: compilacion, pruebas y cobertura",
+                       "Ok":  true,
+                       "Ms":  41651
+                   },
+                   {
+                       "Nombre":  "Frontend: pruebas con cobertura",
+                       "Ok":  true,
+                       "Ms":  32273
+                   },
+                   {
+                       "Nombre":  "Frontend: build",
+                       "Ok":  true,
+                       "Ms":  8369
+                   },
+                   {
+                       "Nombre":  "Repeticion de defectos del piloto",
+                       "Ok":  true,
+                       "Ms":  260
+                   }
+               ]
+}

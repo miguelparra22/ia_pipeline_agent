@@ -1,0 +1,9 @@
+title = "Quality gates del proyecto"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Fixtures del piloto y la marca calibrada ejemplo-de-gate"
+paths = ['''docs/laboratorio-quality-gates/piloto/casos''']
+regexes = ['''ejemplo-de-gate''']
