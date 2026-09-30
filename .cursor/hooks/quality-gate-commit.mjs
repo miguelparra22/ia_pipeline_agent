@@ -7,7 +7,7 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { evaluateProject } from "../../docs/laboratorio-quality-gates/proyecto/gates.mjs";
+import { evaluateProject, scanText } from "../../docs/laboratorio-quality-gates/proyecto/gates.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 
@@ -89,6 +89,7 @@ async function main() {
   let report;
   try {
     report = evaluateProject(root);
+    report = applyFixture(report);
   } catch (error) {
     allow({
       user_message: "No se pudo correr el quality gate antes del commit. El commit sigue.",
@@ -113,11 +114,24 @@ async function main() {
 
   process.stdout.write(
     JSON.stringify({
-      permission: "ask",
-      user_message: `Quality gate en rojo: ${summary}. ${memory}`,
-      agent_message: `El control rápido falló antes del commit: ${summary}. ${memory} No lo des por bueno hasta que la persona confirme.`,
+      permission: "deny",
+      user_message: `Quality gate en rojo: ${summary}. ${memory} El commit no sigue.`,
+      agent_message: `No hagas el commit. El control rápido falló: ${summary}. ${memory}`,
     }),
   );
+}
+
+function applyFixture(report) {
+  const fixture = process.env.QUALITY_GATE_FIXTURE;
+  if (!fixture) return report;
+  const text = fs.readFileSync(fixture, "utf8");
+  const hits = scanText(text, path.relative(root, path.resolve(fixture)));
+  if (hits.length === 0) return report;
+  return {
+    ...report,
+    ok: false,
+    secrets: [...report.secrets, ...hits],
+  };
 }
 
 main();
